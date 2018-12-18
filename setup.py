@@ -5,7 +5,7 @@ setup(
     url='https://github.com/LeonardoRez/fss-feature-hndlr',
     author='Leonardo Rezende',
     author_email='leonardorec1@gmail.com',
-    packages=['features_handler'],
+    packages=['feature-hndlr'],
     install_requires=['numpy'],
     version='0.1',
     # license='MIT',
