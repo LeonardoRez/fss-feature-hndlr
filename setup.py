@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='Rafael\'s Feature Handler',
+    name='handler',
     url='https://github.com/LeonardoRez/fss-feature-hndlr',
     author='Leonardo Rezende',
     author_email='leonardorec1@gmail.com',
