@@ -1,1 +1,1 @@
-from features_handler import extrai_feature
+from .features_handler import extrai_feature
