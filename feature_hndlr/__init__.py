@@ -1,1 +1,1 @@
-from .features_handler import extrai_feature
+from .features_handler import extrai_feature, printa_grafico, split_train_test
