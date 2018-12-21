@@ -64,3 +64,12 @@ def printa_grafico(treinamento, rede):
 	plt.legend(['Treino', 'Teste'], loc='center right')
 	plt.savefig('/content/drive/My Drive/test/graficos/'+rede+'_loss.pdf', bbox_inches='tight')
 	plt.show()
+
+#função que separa a porção de teste depois que a base já está embaralhada
+# train_set, test_set = split_train_test(housing, 0.2)
+def split_train_test(data, labels, indices, test_ratio):
+	shuffled_indices = np.random.permutation(len(data))
+	test_set_size = int(len(data) * test_ratio)
+	test_indices = shuffled_indices[:test_set_size]
+	train_indices = shuffled_indices[test_set_size:]  
+	return data[train_indices], data[test_indices], labels[train_indices], labels[test_indices], indices[train_indices], indices[test_indices]
