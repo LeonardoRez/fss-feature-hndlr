@@ -29,7 +29,7 @@ def extrai_feature(caminho,feature):
 	print('#########################'+c+' Fim da extração '+f+'#########################\n')
 	return features, labels
 
-def printa_grafico(treinamento, rede):
+def printa_grafico(treinamento, rede, caminho, nome_da_rede):
 	SMALL_SIZE = 19
 	MEDIUM_SIZE = 22
 	BIGGER_SIZE = 40
@@ -48,21 +48,21 @@ def printa_grafico(treinamento, rede):
 	plt.plot(treinamento.history['acc'], 'grey')
 	plt.plot(treinamento.history['val_acc'], 'black')
 	# plt.axis([0, 10000, 0, 1.1])
-	plt.title('Acurácia da feature '+rede+'', fontsize=22, weight='bold')
+	plt.title('Acurácia da feature '+nome_da_rede+'', fontsize=22, weight='bold')
 	plt.ylabel('Acurácia (%)')
 	plt.xlabel('Geração')
 	plt.legend(['Treino', 'Teste'], loc='lower right')
-	plt.savefig('/content/drive/My Drive/test/graficos/'+rede+'_acc.pdf', bbox_inches='tight')
+	plt.savefig(caminho+rede+'_acc.pdf', bbox_inches='tight')
 	plt.show()   
 
 	plt.plot(treinamento.history['loss'], 'grey')
 	plt.plot(treinamento.history['val_loss'],'black')  
 	# plt.axis([0, 10000, 0, 1.1])
-	plt.title('Perda da feature '+rede+'', fontsize=22, weight='bold')
+	plt.title('Perda da feature '+nome_da_rede+'', fontsize=22, weight='bold')
 	plt.ylabel('Perda')
 	plt.xlabel('Geração')
 	plt.legend(['Treino', 'Teste'], loc='center right')
-	plt.savefig('/content/drive/My Drive/test/graficos/'+rede+'_loss.pdf', bbox_inches='tight')
+	plt.savefig(caminho+rede+'_loss.pdf', bbox_inches='tight')
 	plt.show()
 
 #função que separa a porção de teste depois que a base já está embaralhada
