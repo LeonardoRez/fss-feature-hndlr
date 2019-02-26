@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
-def extrai_feature(caminho,feature):
+def extrai_feature(caminho,feature, verbose=True):
 	labels = []
 	with open(caminho+feature+'_labels.csv', 'r') as labels_csv:  
 		for row in csv.reader(labels_csv,quoting=csv.QUOTE_NONNUMERIC):      
@@ -18,16 +18,34 @@ def extrai_feature(caminho,feature):
 		for row in csv.reader(features_csv,quoting=csv.QUOTE_NONNUMERIC):
 			features.append(row)
 
+	features = np.array(features)
+	print('\nquant de amostras (para '+feature+'): ',len(features))
+	print('features.shape: ',features.shape)
+	if verbose:
+		#correção do tamanho dos comentários 
+		q = len(feature)
+		c = int(q/2)*'#'
+		f = (int(q/2) + q%2)*'#'
+		print('#########################'+c+' Fim da extração '+f+'#########################\n')	
+	return features, labels
+
+def extrai_feature(caminho, feature, calcado):
+	f,l = extrai_feature(caminho, feature)
+
+	calcados = []
+	with open(caminho+feature+'_calcado.csv', 'r') as calcados_csv:
+		for row in csv.reader(calcados_csv, quoting=csv.QUOTE_NONNUMERIC):
+			calcados.append(row)
+	calcados = np.array(calcados)	
+	print('\nquant de índices de calçados: ',len(calcados))
+	print('calcados.shape: ',calcados.shape)
+	
 	#correção do tamanho dos comentários 
 	q = len(feature)
 	c = int(q/2)*'#'
 	f = (int(q/2) + q%2)*'#'
-
-	features = np.array(features)
-	print('\nquant de amostras (para '+feature+'): ',len(features))
-	print('features.shape: ',features.shape)
-	print('#########################'+c+' Fim da extração '+f+'#########################\n')
-	return features, labels
+	print('#########################'+c+' Fim da extração '+f+'#########################\n')	
+	return f,l,calcados
 
 def printa_grafico(treinamento, rede, caminho, nome_da_rede):
 	SMALL_SIZE = 19
