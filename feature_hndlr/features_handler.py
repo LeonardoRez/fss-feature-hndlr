@@ -65,7 +65,7 @@ def printa_grafico(treinamento, rede, caminho, nome_da_rede, id_calcado=-1):
 	plt.xlabel('Geração')
 	plt.legend(['Treino', 'Teste'], loc='lower right')
 	if id_calcado > 0:
-		plt.savefig(caminho+rede+'_acc_calcado'+id_calcado+'.pdf', bbox_inches='tight')
+		plt.savefig(caminho+rede+'_acc_calcado'+str(id_calcado)+'.pdf', bbox_inches='tight')
 	else:
 		plt.savefig(caminho+rede+'_acc.pdf', bbox_inches='tight')
 	plt.show()   
@@ -78,7 +78,7 @@ def printa_grafico(treinamento, rede, caminho, nome_da_rede, id_calcado=-1):
 	plt.xlabel('Geração')
 	plt.legend(['Treino', 'Teste'], loc='center right')
 	if id_calcado > 0:
-		plt.savefig(caminho+rede+'_loss_calcado'+id_calcado+'.pdf', bbox_inches='tight')
+		plt.savefig(caminho+rede+'_loss_calcado'+str(id_calcado)+'.pdf', bbox_inches='tight')
 	else:
 		plt.savefig(caminho+rede+'_loss.pdf', bbox_inches='tight')
 	plt.show()
