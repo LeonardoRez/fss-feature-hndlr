@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import csv
 
-def extrai_feature(caminho,feature, calcado=False):
+def extrai_feature(caminho,feature, calcado=False, faixa=False):
 	labels = []
 	with open(caminho+feature+'_labels.csv', 'r') as labels_csv:  
 		for row in csv.reader(labels_csv,quoting=csv.QUOTE_NONNUMERIC):      
@@ -30,12 +30,25 @@ def extrai_feature(caminho,feature, calcado=False):
 		calcados = np.array(calcados)	
 		print('\nquant de índices de calçados: ',len(calcados))
 		print('calcados.shape: ',calcados.shape)
+
+	if faixa:
+		faixas = []
+		with open(caminho+feature+'_faixas.csv', 'r') as faixas_csv:
+			for row in csv.reader(faixas_csv, quoting=csv.QUOTE_NONNUMERIC):
+				faixas.append(row)
+		faixas = np.array(faixas)	
+		print('\nquant de índices de calçados: ',len(faixas))
+		print('faixas.shape: ',faixas.shape)
 	
 	#correção do tamanho dos comentários 
 	q = len(feature)
 	c = int(q/2)*'#'
 	f = (int(q/2) + q%2)*'#'
 	print('#########################'+c+' Fim da extração '+f+'#########################\n')	
+	if calcado and faixa:
+		return features, labels, calcados, faixas
+	if faixa:
+		return features, labels, faixas
 	if calcado:
 		return features, labels, calcados
 	return features, labels
