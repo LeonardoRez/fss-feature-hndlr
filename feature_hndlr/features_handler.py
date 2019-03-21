@@ -54,7 +54,7 @@ def extrai_feature(caminho,feature, calcado=False, faixa=False):
 	return features, labels
 
 
-def printa_grafico(treinamento, rede, caminho, nome_da_rede, calcado_prefixo='', id_calcado='', faixa_prefixo='', faixa=''):
+def printa_grafico(treinamento, rede, caminho, nome_da_rede, calcado_prefixo='', id_calcado='', faixa_prefixo='', faixa='', subconj_prefixo='', subconj=''):
 	SMALL_SIZE = 19
 	MEDIUM_SIZE = 22
 	BIGGER_SIZE = 40
@@ -77,7 +77,7 @@ def printa_grafico(treinamento, rede, caminho, nome_da_rede, calcado_prefixo='',
 	plt.ylabel('Acurácia (%)')
 	plt.xlabel('Geração')
 	plt.legend(['Treino', 'Teste'], loc='lower right')
-	plt.savefig(caminho+rede+'_acc'+calcado_prefixo+str(id_calcado)+faixa_prefixo+str(faixa)+'.pdf', bbox_inches='tight')
+	plt.savefig(caminho+rede+'_acc'+calcado_prefixo+str(id_calcado)+faixa_prefixo+str(faixa)+subconj_prefixo+subconj+'.pdf', bbox_inches='tight')
 	plt.show()   
 
 	plt.plot(treinamento.history['loss'], 'grey')
@@ -87,7 +87,7 @@ def printa_grafico(treinamento, rede, caminho, nome_da_rede, calcado_prefixo='',
 	plt.ylabel('Perda')
 	plt.xlabel('Geração')
 	plt.legend(['Treino', 'Teste'], loc='center right')
-	plt.savefig(caminho+rede+'_loss'+calcado_prefixo+str(id_calcado)+faixa_prefixo+str(faixa)+'.pdf', bbox_inches='tight')
+	plt.savefig(caminho+rede+'_loss'+calcado_prefixo+str(id_calcado)+faixa_prefixo+str(faixa)+subconj_prefixo+subconj+'.pdf', bbox_inches='tight')
 	plt.show()
 
 #função que separa a porção de teste depois que a base já está embaralhada
